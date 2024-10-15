@@ -27,7 +27,7 @@ public class AppConfig {
                 .csrf(csrf->csrf.disable())
                 .cors(cors->cors.configurationSource(corsConfigrationSource())); // connect react that time cors error
 
-        return http.build();;
+        return http.build();
     }
 
     private CorsConfigurationSource corsConfigrationSource() {
