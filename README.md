@@ -11,4 +11,6 @@
   - signup
   - jwt configration
   - login
+### Create User Entity
+  - id (primarykey , AUTO Generation )
 ### Project api
