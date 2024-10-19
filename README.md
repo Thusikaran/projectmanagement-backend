@@ -13,4 +13,17 @@
   - login
 ### Create User Entity
   - id (primarykey , AUTO Generation )
+### Create user Repository
+  extents JpaRepository<User ,  Long>
+  - create method "User findByEmail(String email);"
+### create new service 
+   - CustomeUserDetailsImpl
+### create new Controller
+- AuthController (signin and signup metghod)
+### create model
+- Project
+- Chat
+- Message
+- Issue
+- Comment
 ### Project api
