@@ -5,20 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comments {
+public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String content;
-    private LocalDateTime createdDateTime;
-    @ManyToOne
-    private User user;
-    @ManyToOne
-    private Issue issue;
+    private  Long id;
+    private LocalDate subscriptionStartDate;
+    private LocalDate subscriptionEndDate;
+    private PlanType planType;
+    private  boolean valid;
+    @OneToOne
+    private  User user;
 }

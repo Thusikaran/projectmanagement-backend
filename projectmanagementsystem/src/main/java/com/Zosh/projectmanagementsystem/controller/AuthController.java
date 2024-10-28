@@ -6,6 +6,7 @@ import com.Zosh.projectmanagementsystem.repository.UserRepository;
 import com.Zosh.projectmanagementsystem.request.LoginRequest;
 import com.Zosh.projectmanagementsystem.response.AuthResponse;
 import com.Zosh.projectmanagementsystem.service.CustomeUserDetailsImpl;
+import com.Zosh.projectmanagementsystem.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,8 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private CustomeUserDetailsImpl customeUserDetails;
+    @Autowired
+    private SubscriptionService subscriptionService;
 
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse>createUserHandler(@RequestBody User user) throws Exception {
@@ -42,6 +45,9 @@ public class AuthController {
         createdUser.setFullName(user.getFullName());
 
         User savedUser = userRepository.save(createdUser);
+
+        subscriptionService.createSubscription(savedUser);
+
 
         Authentication authentication=new UsernamePasswordAuthenticationToken(user.getEmail(),user.getPassword());
         SecurityContextHolder.getContext().setAuthentication((authentication));
